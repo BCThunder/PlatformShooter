@@ -175,14 +175,13 @@ height = 38.0
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_q7cs0")
+JUMP_VELOCITY = -300.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
 sprite_frames = SubResource("SpriteFrames_8ixai")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
-frame = 5
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -19)
