@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var SPEED : int = 300
+@export var MAX_H_SPEED : int = 300
 @export var JUMP_VELOCITY : int = -300
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -31,9 +32,10 @@ func player_run(delta : float):
 	var direction = input_movement()
 
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x += direction * SPEED * delta
+		velocity.x = clamp(velocity.x, -MAX_H_SPEED, MAX_H_SPEED)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED * delta)
 		
 	if direction != 0:
 		current_state = states.run
