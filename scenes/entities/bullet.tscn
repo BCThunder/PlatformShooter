@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpcvp5yh3aiki"]
+[gd_scene load_steps=7 format=3 uid="uid://bpcvp5yh3aiki"]
 
 [ext_resource type="Texture2D" uid="uid://bsty1ev5mpf1w" path="res://assets/PNG/spritesheets/Fx/shot.png" id="1_e0ysy"]
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="2_af1fi"]
@@ -30,6 +30,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nte5r"]
+radius = 3.0
+
 [node name="Bullet" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_cf4e6")
 animation = &"bullet_shoot"
@@ -42,4 +45,13 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_nte5r")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

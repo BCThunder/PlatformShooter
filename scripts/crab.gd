@@ -4,9 +4,11 @@ var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var SPEED : int = 1500
 @export var wait_time : int = 3
 @export var patrol_points : Node
+@export var health_amount : int = 3
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var timer = $Timer
+var enemy_death_effect = preload("res://scenes/entities/enemy_death_effect.tscn")
 enum states {idle, walk}
 var current_state : states
 
@@ -73,5 +75,20 @@ func enemy_animations():
 	elif current_state == states.walk and can_walk:
 		animated_sprite_2d.play("walk")
 
+
 func _on_timer_timeout():
 	can_walk = true
+
+
+func _on_hurtbox_area_entered(area : Area2D):
+	print("Hurtbox area entered.")
+	if area.get_parent().has_method("get_damage_amount"):
+		var node = area.get_parent() as Node2D
+		health_amount -= node.damage_amount
+		print("Health Amount: ", health_amount)
+		
+		if health_amount <= 0:
+			var enemy_death_effect_instance = enemy_death_effect.instantiate() as Node2D
+			enemy_death_effect_instance.global_position = global_position
+			get_parent().add_child(enemy_death_effect_instance)
+			queue_free()

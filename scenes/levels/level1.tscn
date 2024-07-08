@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4crme2arfgdj"]
+[gd_scene load_steps=11 format=3 uid="uid://b4crme2arfgdj"]
 
 [ext_resource type="PackedScene" uid="uid://bp8si7hgmcnf6" path="res://scenes/levels/parallax_background.tscn" id="1_fmtr5"]
 [ext_resource type="Texture2D" uid="uid://vpp2buyperpq" path="res://assets/PNG/environment/layers/tilesets.png" id="2_25okp"]
 [ext_resource type="Texture2D" uid="uid://bg6ma15y15ux2" path="res://assets/PNG/environment/layers/props.png" id="3_727ig"]
 [ext_resource type="Texture2D" uid="uid://es51t4u7a3s3" path="res://assets/PNG/environment/layers/walls.png" id="4_e8eaf"]
 [ext_resource type="PackedScene" uid="uid://cs7vjdta2o0vu" path="res://scenes/entities/player.tscn" id="5_l8c10"]
+[ext_resource type="PackedScene" uid="uid://cr0gxkkkx4w8g" path="res://scenes/entities/crab.tscn" id="6_8mptd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cpari"]
 texture = ExtResource("2_25okp")
@@ -685,3 +686,72 @@ limit_top = -275
 limit_right = 1665
 limit_bottom = 50
 editor_draw_limits = true
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="crab5" parent="Enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_8mptd")]
+position = Vector2(1508, -162)
+SPEED = 2000
+wait_time = 1
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/crab5"]
+
+[node name="Point1" type="Marker2D" parent="Enemies/crab5/PatrolPoints"]
+position = Vector2(-101, 12)
+
+[node name="Point2" type="Marker2D" parent="Enemies/crab5/PatrolPoints"]
+position = Vector2(69, 11)
+
+[node name="crab4" parent="Enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_8mptd")]
+position = Vector2(1251, -19)
+SPEED = 2000
+wait_time = 1
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/crab4"]
+
+[node name="Point1" type="Marker2D" parent="Enemies/crab4/PatrolPoints"]
+position = Vector2(-135, 12)
+
+[node name="Point2" type="Marker2D" parent="Enemies/crab4/PatrolPoints"]
+position = Vector2(64, 11)
+
+[node name="crab3" parent="Enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_8mptd")]
+position = Vector2(919, -18)
+SPEED = 2000
+wait_time = 1
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/crab3"]
+
+[node name="Point1" type="Marker2D" parent="Enemies/crab3/PatrolPoints"]
+position = Vector2(-153, 8)
+
+[node name="Point2" type="Marker2D" parent="Enemies/crab3/PatrolPoints"]
+position = Vector2(81, 11)
+
+[node name="crab2" parent="Enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_8mptd")]
+position = Vector2(619, -20)
+SPEED = 2000
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/crab2"]
+
+[node name="Point1" type="Marker2D" parent="Enemies/crab2/PatrolPoints"]
+position = Vector2(-101, 12)
+
+[node name="Point2" type="Marker2D" parent="Enemies/crab2/PatrolPoints"]
+position = Vector2(69, 11)
+
+[node name="crab" parent="Enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("6_8mptd")]
+position = Vector2(236, -18)
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="Enemies/crab"]
+
+[node name="Point1" type="Marker2D" parent="Enemies/crab/PatrolPoints"]
+position = Vector2(-76, 12)
+
+[node name="Point2" type="Marker2D" parent="Enemies/crab/PatrolPoints"]
+position = Vector2(60, 11)
