@@ -261,6 +261,3 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -19)
 shape = SubResource("CapsuleShape2D_tfvle")
-
-[node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(18, -24)
