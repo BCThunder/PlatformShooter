@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var bullet = preload("res://scenes/entities/bullet.tscn")
+var player_death_effect = preload("res://scenes/entities/player_death_effect.tscn")
 
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var SPEED : int = 200
@@ -12,6 +13,7 @@ var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var muzzle = $Muzzle
+@onready var hit_animation_player = $HitAnimationPlayer
 
 enum states { idle, run, jump, shoot}
 var current_state : states
@@ -111,6 +113,22 @@ func player_animations():
 		animated_sprite_2d.play("run_shoot")
 
 
+func player_death():
+	var player_death_instance = player_death_effect.instantiate() as Node2D
+	player_death_instance.global_position = global_position
+	get_parent().add_child(player_death_instance)
+	queue_free()
+
 func input_movement():
 	var direction : float = Input.get_axis("move_left", "move_right")
 	return direction
+
+
+func _on_hurtbox_body_entered(body : Node2D):
+	if body.is_in_group("Enemy"):
+		print("Enemy entered: ", body.damage_amount)
+		hit_animation_player.play("hit")
+		HealthManager.decrease_health(body.damage_amount)
+		
+	if HealthManager.current_health == 0:
+		player_death()

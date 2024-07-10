@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://yfgqyce65hub"]
+
+[ext_resource type="Texture2D" uid="uid://tvlk11ifjrba" path="res://assets/PNG/ui/heart_1.png" id="1_diwt3"]
+[ext_resource type="Script" path="res://scripts/player/health_bar.gd" id="1_qf2i8"]
+[ext_resource type="Texture2D" uid="uid://g7n4s2fyp52v" path="res://assets/PNG/ui/heart_2.png" id="2_ctpa2"]
+
+[node name="HealthBar" type="Node2D"]
+script = ExtResource("1_qf2i8")
+heart_png_0 = ExtResource("2_ctpa2")
+heart_png_1 = ExtResource("1_diwt3")
+
+[node name="Heart1" type="Sprite2D" parent="."]
+position = Vector2(7, 6)
+texture = ExtResource("1_diwt3")
+
+[node name="Heart2" type="Sprite2D" parent="."]
+position = Vector2(23, 6)
+texture = ExtResource("1_diwt3")
+
+[node name="Heart3" type="Sprite2D" parent="."]
+position = Vector2(39, 6)
+texture = ExtResource("1_diwt3")

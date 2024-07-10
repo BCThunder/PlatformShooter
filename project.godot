@@ -15,6 +15,11 @@ run/main_scene="res://scenes/levels/level1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+HealthManager="*res://scripts/health_manager.gd"
+GameManager="*res://scripts/game_manager.gd"
+
 [display]
 
 window/size/viewport_width=480
