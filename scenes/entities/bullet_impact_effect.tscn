@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bgceitneh2o02"]
 
 [ext_resource type="Texture2D" uid="uid://0f2640adef4y" path="res://assets/PNG/spritesheets/Fx/impact.png" id="1_oa0ob"]
-[ext_resource type="Script" path="res://scripts/bullet_impact_effect.gd" id="2_x8mp3"]
+[ext_resource type="Script" path="res://scripts/player/bullet_impact_effect.gd" id="2_x8mp3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ie4p4"]
 atlas = ExtResource("1_oa0ob")

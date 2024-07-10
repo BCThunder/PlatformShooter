@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cgbs0j7wwubc1"]
 
 [ext_resource type="Texture2D" uid="uid://dm64vuyhubrxn" path="res://assets/PNG/spritesheets/Fx/enemy-death.png" id="1_pnke1"]
-[ext_resource type="Script" path="res://scripts/enemy_death_effect.gd" id="2_nmtol"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_death_effect.gd" id="2_nmtol"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kptg"]
 atlas = ExtResource("1_pnke1")
