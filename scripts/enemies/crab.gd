@@ -9,7 +9,7 @@ var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var timer = $Timer
-var enemy_death_effect = preload("res://scenes/entities/enemy_death_effect.tscn")
+var enemy_death_effect = preload("res://scenes/fx/enemy_death_effect.tscn")
 enum states {idle, walk}
 var current_state : states
 

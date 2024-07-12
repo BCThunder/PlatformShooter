@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var bullet = preload("res://scenes/entities/bullet.tscn")
-var player_death_effect = preload("res://scenes/entities/player_death_effect.tscn")
+var bullet = preload("res://scenes/items/bullet.tscn")
+var player_death_effect = preload("res://scenes/fx/player_death_effect.tscn")
 
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var SPEED : int = 200

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4crme2arfgdj"]
+[gd_scene load_steps=15 format=3 uid="uid://b4crme2arfgdj"]
 
 [ext_resource type="PackedScene" uid="uid://bp8si7hgmcnf6" path="res://scenes/levels/parallax_background.tscn" id="1_fmtr5"]
 [ext_resource type="Texture2D" uid="uid://vpp2buyperpq" path="res://assets/PNG/environment/layers/tilesets.png" id="2_25okp"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cs7vjdta2o0vu" path="res://scenes/entities/player.tscn" id="5_l8c10"]
 [ext_resource type="PackedScene" uid="uid://cr0gxkkkx4w8g" path="res://scenes/entities/crab.tscn" id="6_8mptd"]
 [ext_resource type="PackedScene" uid="uid://b1lhrrs8qkguu" path="res://scenes/ui/game_screen.tscn" id="7_86x62"]
+[ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="8_flw3s"]
+[ext_resource type="PackedScene" uid="uid://5adsnnfbgxri" path="res://scenes/items/blue_coin.tscn" id="9_24yyu"]
+[ext_resource type="PackedScene" uid="uid://dk20iu4hy3ruf" path="res://scenes/items/health_pickup.tscn" id="10_ut8e4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cpari"]
 texture = ExtResource("2_25okp")
@@ -661,7 +664,7 @@ sources/0 = SubResource("TileSetAtlasSource_cpari")
 sources/1 = SubResource("TileSetAtlasSource_3jo2h")
 sources/2 = SubResource("TileSetAtlasSource_rmmxb")
 
-[node name="base_level" type="Node2D"]
+[node name="level1" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_fmtr5")]
 
@@ -680,13 +683,6 @@ layer_2/tile_data = PackedInt32Array(-65531, 393216, 6, 5, 393216, 7, -65516, 39
 [node name="Player" parent="." instance=ExtResource("5_l8c10")]
 position = Vector2(40, -8)
 AIR_RESISTANCE = 1500
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = -75
-limit_top = -275
-limit_right = 1665
-limit_bottom = 50
-editor_draw_limits = true
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -758,3 +754,43 @@ position = Vector2(-76, 12)
 position = Vector2(60, 11)
 
 [node name="GameScreen" parent="." instance=ExtResource("7_86x62")]
+
+[node name="PlayerCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(-1, -8)
+limit_left = -85
+limit_top = -300
+limit_right = 1675
+limit_bottom = 55
+script = ExtResource("8_flw3s")
+player = NodePath("../Player")
+
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="BlueCoin" parent="Collectibles" instance=ExtResource("9_24yyu")]
+position = Vector2(-24, -184)
+
+[node name="BlueCoin2" parent="Collectibles" instance=ExtResource("9_24yyu")]
+position = Vector2(0, -184)
+
+[node name="BlueCoin3" parent="Collectibles" instance=ExtResource("9_24yyu")]
+position = Vector2(24, -184)
+
+[node name="BlueCoin4" parent="Collectibles" instance=ExtResource("9_24yyu")]
+position = Vector2(688, -184)
+
+[node name="BlueCoin5" parent="Collectibles" instance=ExtResource("9_24yyu")]
+position = Vector2(1584, -168)
+
+[node name="BlueCoin6" parent="Collectibles" instance=ExtResource("9_24yyu")]
+position = Vector2(1600, -168)
+
+[node name="BlueCoin7" parent="Collectibles" instance=ExtResource("9_24yyu")]
+position = Vector2(1616, -168)
+
+[node name="Pickup" type="Node" parent="."]
+
+[node name="HealthPickup" parent="Pickup" instance=ExtResource("10_ut8e4")]
+position = Vector2(384, -128)
+
+[node name="HealthPickup2" parent="Pickup" instance=ExtResource("10_ut8e4")]
+position = Vector2(1056, -32)

@@ -1,8 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1lhrrs8qkguu"]
+[gd_scene load_steps=4 format=3 uid="uid://b1lhrrs8qkguu"]
 
 [ext_resource type="PackedScene" uid="uid://yfgqyce65hub" path="res://scenes/ui/health_bar.tscn" id="1_f0tts"]
+[ext_resource type="Script" path="res://scripts/ui/game_screen.gd" id="1_jcjnp"]
+[ext_resource type="Texture2D" uid="uid://b5n8tvhiqej23" path="res://assets/PNG/spritesheets/items/blue_coin.png" id="2_lh3s4"]
 
 [node name="GameScreen" type="CanvasLayer"]
+script = ExtResource("1_jcjnp")
 
-[node name="HealthBar" parent="." instance=ExtResource("1_f0tts")]
-position = Vector2(10, 10)
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="HealthBar" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("1_f0tts")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
+texture = ExtResource("2_lh3s4")
+centered = false
+
+[node name="CollectibleLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "0"
