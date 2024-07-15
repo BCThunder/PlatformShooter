@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://m5giproml1hr"]
+
+[ext_resource type="Texture2D" uid="uid://dnmkx72mcylji" path="res://assets/PNG/environment/environment-preview.png" id="1_22318"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu_screen.gd" id="1_f875j"]
+[ext_resource type="Theme" uid="uid://mecfsny3l082" path="res://scenes/ui/game_theme.tres" id="2_yg5u0"]
+[ext_resource type="Texture2D" uid="uid://ckuiojb0gkaqj" path="res://assets/PNG/sprites/player/player-run/player-run-4.png" id="3_dpcp0"]
+[ext_resource type="Texture2D" uid="uid://bwk4083s5iyey" path="res://assets/PNG/sprites/enemies/crab-walk/crab-walk-2.png" id="4_2gsd3"]
+
+[node name="MainMenuScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_f875j")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -335.0
+offset_top = -74.0
+offset_right = 241.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_22318")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yg5u0")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Player-run-4" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(177, 225)
+texture = ExtResource("3_dpcp0")
+
+[node name="Crab-walk-2" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(347, 231)
+texture = ExtResource("4_2gsd3")
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

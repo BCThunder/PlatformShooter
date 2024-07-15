@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://5adsnnfbgxri"]
+[gd_scene load_steps=12 format=3 uid="uid://5adsnnfbgxri"]
 
 [ext_resource type="Texture2D" uid="uid://bxxd7gof3ip48" path="res://assets/PNG/spritesheets/items/coin_spritesheet.png" id="1_e4e27"]
 [ext_resource type="Script" path="res://scripts/items/blue_coin.gd" id="1_lifau"]
+[ext_resource type="Theme" uid="uid://mecfsny3l082" path="res://scenes/ui/game_theme.tres" id="3_hpeff"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f2tmf"]
 atlas = ExtResource("1_e4e27")
@@ -85,6 +86,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_hpeff")
 text = "1"
 horizontal_alignment = 1
 

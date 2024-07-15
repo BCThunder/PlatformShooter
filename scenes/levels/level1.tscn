@@ -763,6 +763,7 @@ limit_right = 1675
 limit_bottom = 55
 script = ExtResource("8_flw3s")
 player = NodePath("../Player")
+smoothing_enabled = true
 
 [node name="Collectibles" type="Node" parent="."]
 

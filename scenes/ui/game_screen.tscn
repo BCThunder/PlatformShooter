@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1lhrrs8qkguu"]
+[gd_scene load_steps=6 format=3 uid="uid://b1lhrrs8qkguu"]
 
 [ext_resource type="PackedScene" uid="uid://yfgqyce65hub" path="res://scenes/ui/health_bar.tscn" id="1_f0tts"]
 [ext_resource type="Script" path="res://scripts/ui/game_screen.gd" id="1_jcjnp"]
 [ext_resource type="Texture2D" uid="uid://b5n8tvhiqej23" path="res://assets/PNG/spritesheets/items/blue_coin.png" id="2_lh3s4"]
+[ext_resource type="Texture2D" uid="uid://db7a3fpjv42fd" path="res://assets/PNG/ui/pause_button.png" id="4_o5h3w"]
+[ext_resource type="Theme" uid="uid://mecfsny3l082" path="res://scenes/ui/game_theme.tres" id="4_pqadl"]
 
 [node name="GameScreen" type="CanvasLayer"]
 script = ExtResource("1_jcjnp")
@@ -37,10 +39,20 @@ layout_mode = 2
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
 texture = ExtResource("2_lh3s4")
 centered = false
+offset = Vector2(-2, 0)
 
 [node name="CollectibleLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 12
+size_flags_horizontal = 4
+theme = ExtResource("4_pqadl")
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseTextureButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("4_o5h3w")
+
+[connection signal="pressed" from="MarginContainer/PauseTextureButton" to="." method="_on_pause_texture_button_pressed"]
